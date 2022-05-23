@@ -3,7 +3,6 @@
 {% block content %}
 <div class="column is-4 is-offset-4">
     <h3 class="title">post a sale!</h3>
-    <div class="center_norm">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -11,24 +10,40 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/post">
-            <div class="center_norm">
+        <form method="POST" action="/sale">
+                <div class="center_norm">
+                    <input type="file" class="form-control form-control-inline" id="customFile" />
+            <br>
+            <br>
                 <div class="control">
-                    <input class="input is-large" type="input" name="email" placeholder="Your Email">
+                    <input class="input is-large" type="input" name="product" placeholder="Product" autofocus="">
                 </div>
             <br>
                 <div class="control">
-                    <input class="input is-large" type="input" name="password" placeholder="Your Password">
+                    <input class="input is-large" type="input" name="name" placeholder="Name" autofocus="">
                 </div>
             <br>
-                <label class="checkbox">
-                    <input type="checkbox" name="remember">
-                    Remember me
-                </label>
+                <div class="control">
+                    <input class="input is-large" type="input" name="address" placeholder="Address" autofocus="">
+                </div>
             <br>
-                <button class="button is-block is-info is-large is-fullwidth">Login</button>
+                <div class="form-group">
+                    <select multiple class="form-control form-control-inline" id="exampleFormControlSelect2" autofocus="">
+                    <option>I am available on Monday for pickup!</option>
+                    <option>I am available on Tuesday for pickup!</option>
+                    <option>I am available on Wednesday for pickup!</option>
+                    <option>I am available on Thursday for pickup!</option>
+                    <option>I am available on Friday for pickup!</option>
+                    <option>I am available on Saturday for pickup!</option>
+                    <option>I am available on Sunday for pickup!</option>
+                    </select>
+                </div>
+            <br>
+                <div class="control">
+                    <input class="input is-large" type="input" name="phoneno" placeholder="Phone Number" autofocus="">
+                </div>
+                <button class="button is-block is-info is-large is-fullwidth">Send to BazaarX Network</button>
             </div>
         </form>
-    </div>
 </div>
 {% endblock %}

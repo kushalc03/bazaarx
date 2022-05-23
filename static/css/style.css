@@ -43,6 +43,7 @@ ul li{
     -moz-animation: fadeIn linear 3s;
     -o-animation: fadeIn linear 3s;
     -ms-animation: fadeIn linear 3s;
+    width: 25%;
 }
 
 @keyframes fadeIn {
@@ -74,13 +75,18 @@ html {
     height: 100%;
 }
 
+.form-control-inline {
+    min-width: 0;
+    width: auto;
+    display: inline;
+}
+
 body {
     background-image: url('family.jpeg');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 25%
 }
 
 input[type="text"], input[type="password"] {
