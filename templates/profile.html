@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center">
+<h1 class="title">
+  &nbsp welcome!
+</h1>
+<h3 class="subtitle">
+  <nav class="navbar navbar-expand-md navbar-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto mt-2">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('main.post') }}">sales.</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('main.map') }}">map.</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">logout.</a></li>
+                {% endif %}
+                {% if not current_user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">login.</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.signup') }}">sign up.</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+  </nav>
+</h3>
+</div>
+{% endblock %}
+

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center_norm">
+<div class="column is-4 is-offset-4">
+    <h3 class="title">login.</h3>
+    <div class="center_norm">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/login">
+            <div class="center_norm">
+                <div class="control">
+                    <input class="input is-large" type="input" name="email" placeholder="Your Email">
+                </div>
+            <br>
+                <div class="control">
+                    <input class="input is-large" type="input" name="password" placeholder="Your Password">
+                </div>
+            <br>
+                <label class="checkbox">
+                    <input type="checkbox" name="remember">
+                    Remember me
+                </label>
+            <br>
+                <button class="button is-block is-info is-large is-fullwidth">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
