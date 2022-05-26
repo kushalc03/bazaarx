@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="column is-4 is-offset-4">
     <h3 class="title">post a sale!</h3>
         {% with messages = get_flashed_messages() %}
@@ -10,40 +11,100 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/sale">
+        <form id="saleform" role="form" method="POST">
                 <div class="center_norm">
-                    <input type="file" class="form-control form-control-inline" id="customFile" />
-            <br>
+                    <!-- <input type="file" accept='image/*' class="form-control form-control-inline" id="customFile" />
+                    <img id='output' style="height:100px; width:100px;">
+            <br> -->
             <br>
                 <div class="control">
-                    <input class="input is-large" type="input" name="product" placeholder="Product" autofocus="">
+                    <input class="input is-large" type="input" name="product" placeholder="Product" id="product" autofocus="">
                 </div>
             <br>
                 <div class="control">
-                    <input class="input is-large" type="input" name="name" placeholder="Name" autofocus="">
+                    <input class="input is-large" type="input" name="name" placeholder="Name" id="name" autofocus="">
                 </div>
             <br>
                 <div class="control">
-                    <input class="input is-large" type="input" name="address" placeholder="Address" autofocus="">
+                    <input class="input is-large" type="input" name="address" placeholder="Address" id="address" autofocus="">
                 </div>
             <br>
                 <div class="form-group">
-                    <select multiple class="form-control form-control-inline" id="exampleFormControlSelect2" autofocus="">
-                    <option>I am available on Monday for pickup!</option>
-                    <option>I am available on Tuesday for pickup!</option>
-                    <option>I am available on Wednesday for pickup!</option>
-                    <option>I am available on Thursday for pickup!</option>
-                    <option>I am available on Friday for pickup!</option>
-                    <option>I am available on Saturday for pickup!</option>
-                    <option>I am available on Sunday for pickup!</option>
+                    <select multiple class="form-control form-control-inline" id="pickup_avail" autofocus="">
+                    <option value="" selected disabled>Choose all days available for pickup</option>
+                    <option value="Monday">I am available on Monday!</option>
+                    <option value="Tuesday">I am available on Tuesday!</option>
+                    <option value="Wednesday">I am available on Wednesday!</option>
+                    <option value="Thursday">I am available on Thursday!</option>
+                    <option value="Friday">I am available on Friday!</option>
+                    <option value="Saturday">I am available on Saturday!</option>
+                    <option value="Sunday">I am available on Sunday!</option>
                     </select>
                 </div>
             <br>
-                <div class="control">
-                    <input class="input is-large" type="input" name="phoneno" placeholder="Phone Number" autofocus="">
-                </div>
-                <button class="button is-block is-info is-large is-fullwidth">Send to BazaarX Network</button>
+                <button class="button is-block is-info is-large is-fullwidth" id="button">Send to BazaarX Network</button>
             </div>
+            <div id="result"></div>
         </form>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#saleform").submit(function(e) {
+                // var file = document.getElementById('customFile');
+                // var input = file.target;
+
+                // var reader = new FileReader();
+                // reader.onload = function(){
+                //     var dataURL = reader.result;
+                //     var output = document.getElementById('output');
+                //     output.src = dataURL;
+                // };
+                // reader.readAsDataURL(input.files[0]);
+                // var file = document.getElementById('customFile');
+                // if(file.files.length)
+                // {
+                //     var reader = new FileReader();
+
+                //     reader.onload = function(e);
+                //     reader.readAsBinaryString(file.files[0]);
+                // }
+                var saledata = $(this).serialize();
+                var selected = [];
+                for (var option of document.getElementById('pickup_avail').options)
+                {
+                    if (option.selected) {
+                        selected.push(option.value);
+                    }
+                }
+                saledata += "&days=" + selected;
+                alert(saledata);  
+            // var eNameData = $("#name").val();
+            // console.log("HIHIHIHIHIHI");
+            // var dataToSend = 'name=' + eNameData;
+            $.ajax({
+                type: 'POST',
+                url: '/Users/kushalchattopadhyay/BazaarX/project/templates/index.php',
+                data: "EWGWEGWEGWEGWEGWE",
+                success: function( data ) {
+                },
+                error: function(xhr, status, error) {
+                    // check status && error
+                },
+                dataType: 'text'
+            });
+            $('#button').click(function() {
+                var1 = saledata;
+                $.ajax({
+                    type: 'POST',
+                    url: '/Users/kushalchattopadhyay/BazaarX/project/templates/index.php',
+                    data: { sale: "KWEFWEF" },
+                    success: function(data) {
+                        $('#result').html(response);
+                    }
+                    });
+                }); 
+            }); 
+        });
+        </script>
 </div>
+
 {% endblock %}

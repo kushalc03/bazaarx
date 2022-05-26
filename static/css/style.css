@@ -43,7 +43,7 @@ ul li{
     -moz-animation: fadeIn linear 3s;
     -o-animation: fadeIn linear 3s;
     -ms-animation: fadeIn linear 3s;
-    width: 25%;
+    width: 30%;
 }
 
 @keyframes fadeIn {
